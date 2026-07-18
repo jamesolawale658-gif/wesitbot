@@ -1,0 +1,41 @@
+# wesitbot
+
+Telegram bot deployed via Railway, code hosted on GitHub.
+
+## 1. Create the bot
+1. Message **@BotFather** on Telegram
+2. `/newbot` → set name and username (`@wesitbot`)
+3. Copy the API token it gives you
+
+## 2. Push this code to GitHub
+IMPORTANT: when creating/renaming files, make sure you use a real period `.`
+not a typographic middot `·` (this happens if autocorrect/smart punctuation
+is on when typing on a phone). Filenames must be exactly:
+`bot.py`, `requirements.txt`, `railway.json`, `.gitignore`, `.env.example`, `README.md`
+
+```bash
+cd wesitbot
+git init
+git add .
+git commit -m "Initial bot setup"
+git branch -M main
+git remote add origin https://github.com/<your-username>/wesitbot.git
+git push -u origin main
+```
+
+## 3. Deploy on Railway
+1. Go to railway.app → **New Project** → **Deploy from GitHub repo**
+2. Select this repo
+3. Go to **Variables** tab and add:
+   - `BOT_TOKEN` = your token from BotFather
+   - `WEBHOOK_URL` = your Railway public URL (find it under **Settings > Networking > Generate Domain**), e.g. `https://wesitbot-production.up.railway.app`
+4. Railway will auto-install `requirements.txt` and run `python bot.py` (set explicitly in `railway.json`)
+
+## 4. Test it
+Message your bot on Telegram:
+- `/start` – welcome message
+- `/help` – command list
+
+## Extending it
+Replace the `echo` handler in `bot.py` with your actual project logic —
+that's where your bot's real feature goes (image conversion, URL shortening, etc.)
